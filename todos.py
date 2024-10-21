@@ -12,9 +12,13 @@ from nanodjango import Django
 
 app = Django(
     SECRET_KEY=os.environ["DJANGO_SECRET_KEY"],
+    SQLITE_DATABASE="todos_db.sqlite3"
 )
 
 
+# #############################################################################
+# Models
+# #############################################################################
 class ToDo(models.Model):
     '''
     A task to be done
@@ -30,3 +34,18 @@ class ToDo(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+# #############################################################################
+# Views
+# #############################################################################
+@app.route("/")
+def todos(request):
+    return "This is a list of todos"
+
+
+# #############################################################################
+# Using app.run avoids having to invoke the script with 'nanojango'
+# #############################################################################
+if __name__ == "__main__":
+    app.run()
