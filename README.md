@@ -23,7 +23,7 @@ Static code analysis is done using [flake8](https://flake8.pycqa.org/en/latest/#
 
 A `.flake8` configuration file controls how flake8 behaves, amongst other thing this configuration file allows some warnings to be suppressed and this is sometimes an appropriate action.
 
-Execute the following from the parent project directory (that is, the directory with `manage.py` in)
+Execute the following from the project root directory.
 
 ```default
 $ flake8 ./
