@@ -1,5 +1,6 @@
 # Hide sqlite db file
 db.sqlite3
+*db.sqlite3
 #  Hide the secret stuff
 .envrc
 # Byte-compiled / optimized / DLL files
