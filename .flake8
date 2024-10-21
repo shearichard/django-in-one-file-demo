@@ -1,0 +1,14 @@
+[flake8]
+exclude = venv, migrations,settings.py
+max-line-length = 120
+#
+# ---------------------------------------------------------
+# E201 is excluded because I like to get parameters lined
+# up and it seems I can't do that without having triggered
+# E201
+# ---------------------------------------------------------
+# DJ06 and DJ07 are excluded because I think entering long
+# lists of field names is as likely to produce errors as
+# using __all__ etc
+# 
+ignore = E402,E501,E201,DJ06,DJ07
