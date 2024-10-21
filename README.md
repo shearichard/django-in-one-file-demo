@@ -3,3 +3,13 @@ This project explores the ideas of having an entire [Django](https://www.djangop
 
 It's initially based around [this repos](https://github.com/radiac/nanodjango).
 
+## Use of Environmental Variables
+Secrets are kept in environmental variables. The [direnv' utility](https://direnv.net) in conjunction with a .envrc file results in the environmental variables being autoloaded when the current directory is the project root (or child directories of that). 
+
+The .envrc file is not committed to the repos but the .envrc_TEMPLATE file, which is committed, provides guidance on what should appear in the .envrc.
+
+## Regenerating Django Secret Key
+```
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
+
