@@ -55,7 +55,7 @@ class ToDo(models.Model):
 # #############################################################################
 @app.route("/")
 def todos(request):
-    todos_list = ToDo.objects.order_by("-should_be_completed_by_date")
+    todos_list = ToDo.objects.order_by("should_be_completed_by_date")
     template = loader.get_template("todos/index.html")
     context = {
         "todos_list": todos_list,

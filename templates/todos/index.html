@@ -8,17 +8,40 @@
     <p class="lead">This is a simple application to demonstrate the 'django in one file' powers of nanodjango.</p>
     <hr class="my-4">
 	  <h2>Todo List</h2>
-	  {% if todos_list %}
-	    <ul>
-	    {% for todo in todos_list %}
-		<li>
-		  {{ todo.task }}
-		</li>
-	    {% endfor %}
-	    </ul>
-	  {% else %}
-	    <p>No Todos are available.</p>
-	  {% endif %}
+    <!-- In your Django template -->
+
+		<table class="table table-responsive table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">Task</th>
+		      <th scope="col">Completed ?</th>
+		      <th scope="col">Complete By</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+			  {% if todos_list %}
+			    {% for todo in todos_list %}
+            <tr>
+              <td>{{ todo.task }}</td>
+              <td>
+                {% if todo.is_completed%}
+                  <i class="bi bi-check-circle"></i>
+                {% else %}
+                  <i class="bi bi-circle"></i>
+                {% endif %}
+              </td>
+              <td>{{ todo.should_be_completed_by_date |date:"D d M Y" }}</td>
+            </tr>
+          {% endfor %}
+			  {% else %}
+          <tr>
+            <td>
+              No Todos are available.
+            </td>
+          </tr>
+			  {% endif %}
+		  </tbody>
+		</table>
 </div>
 {% endblock %}
 
