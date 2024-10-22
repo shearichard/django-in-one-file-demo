@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>My test page</title>
+    <style>
+      html {
+        max-width: 70ch;
+        padding: 3em 1em;
+        margin: auto;
+        line-height: 1.75;
+        font-size: 1.25em;
+        font-family: sans-serif;
+        color: darkslategray;
+        background-color: whitesmoke;
+      }
+      //
+      h1,h2,h3,h4,h5,h6 {
+        margin: 3em 0 1em;
+      }
+      //
+      p,ul,ol {
+        margin-bottom: 2em;
+        color: #1d1d1d;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todos</h1>
+    {% if todos_list %}
+      <ul>
+      {% for todo in todos_list %}
+          <li>
+            {{ todo.task }}
+          </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p>No Todos are available.</p>
+    {% endif %}
+  </body>
+</html>
+
