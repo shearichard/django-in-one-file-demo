@@ -1,0 +1,19 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+
+{% block title %}nanodjango : Todo list{% endblock %}
+
+{% block content %}
+  <h2>Todo List</h2>
+  {% if todos_list %}
+    <ul>
+    {% for todo in todos_list %}
+        <li>
+          {{ todo.task }}
+        </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No Todos are available.</p>
+  {% endif %}
+{% endblock %}

@@ -1,19 +1,24 @@
-<!-- index.html -->
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block title %}nanodjango : Todo list{% endblock %}
 
 {% block content %}
-  <h2>Todo List</h2>
-  {% if todos_list %}
-    <ul>
-    {% for todo in todos_list %}
-        <li>
-          {{ todo.task }}
-        </li>
-    {% endfor %}
-    </ul>
-  {% else %}
-    <p>No Todos are available.</p>
-  {% endif %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to the nanodjango demo</h1>
+    <p class="lead">This is a simple application to demonstrate the 'django in one file' powers of nanodjango.</p>
+    <hr class="my-4">
+	  <h2>Todo List</h2>
+	  {% if todos_list %}
+	    <ul>
+	    {% for todo in todos_list %}
+		<li>
+		  {{ todo.task }}
+		</li>
+	    {% endfor %}
+	    </ul>
+	  {% else %}
+	    <p>No Todos are available.</p>
+	  {% endif %}
+</div>
 {% endblock %}
+
