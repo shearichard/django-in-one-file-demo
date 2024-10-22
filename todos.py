@@ -9,8 +9,6 @@ import os
 
 from django.db import models
 from nanodjango import Django
-from typing import Optional
-from ninja import Schema
 
 API_VERSION = "v1"
 API_TODOS_URL_BASE = "todos"
@@ -29,8 +27,8 @@ class ToDo(models.Model):
     A task to be done
     '''
     task = models.CharField(max_length=100)
-    is_completed = models.BooleanField()
-    should_be_completed_by_date = models.DateTimeField(null=False)
+    is_completed = models.BooleanField(default=False)
+    should_be_completed_by_date = models.DateTimeField(null=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
@@ -58,9 +56,20 @@ def todos(request):
 
 
 # #############################################################################
+# Schema
+# #############################################################################
+class ToDoIn(app.ninja.Schema):
+  task: str
+'''
+class ToDoIn():
+  pass
+'''
+
+
+# #############################################################################
 # API End Points
 # #############################################################################
-@app.api.get(f"{API_TODOS_URL_BASE}/{API_VERSION}/")
+@app.api.get(f"{API_VERSION}/{API_TODOS_URL_BASE}/")
 def api_todos(request):
     output = []
     todos = ToDo.objects.order_by("-should_be_completed_by_date")
@@ -70,6 +79,12 @@ def api_todos(request):
     return {"data": output}
 
 
+@app.api.post(f"{API_VERSION}/{API_TODOS_URL_BASE}/")
+def api_create_todos(request, data: ToDoIn):
+    todo = ToDo(task=data.task)
+    todo.save() 
+    return {"data": ""}
+
 # #############################################################################
 # Using app.run avoids having to invoke the script with 'nanojango'
 # #############################################################################
@@ -78,6 +93,30 @@ if __name__ == "__main__":
 
 
 '''
+
+# #############################################################################
+# Models
+# #############################################################################
+@api.post("/users/")
+def create_user(request, data: UserIn):
+    user = User(username=data.username) # User is django auth.User
+    user.set_password(data.password)
+    user.save()
+    # ... return ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 from django.http import HttpResponse
 
 from .models import Question
