@@ -9,6 +9,8 @@ import os
 
 from django.db import models
 from nanodjango import Django
+from typing import Optional
+from ninja import Schema
 
 API_VERSION = "v1"
 API_TODOS_URL_BASE = "todos"
@@ -28,6 +30,7 @@ class ToDo(models.Model):
     '''
     task = models.CharField(max_length=100)
     is_completed = models.BooleanField()
+    should_be_completed_by_date = models.DateTimeField(null=False)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
@@ -44,15 +47,27 @@ class ToDo(models.Model):
 # #############################################################################
 @app.route("/")
 def todos(request):
-    return "This is not a list of todos"
+    todos = ToDo.objects.order_by("-should_be_completed_by_date")
+    output = ""
+    if todos:
+        output = "There are some todos"
+    else:
+        output = "There are no todos"
+    #
+    return output
 
 
 # #############################################################################
-# Views
+# API End Points
 # #############################################################################
 @app.api.get(f"{API_TODOS_URL_BASE}/{API_VERSION}/")
 def api_todos(request):
-    return {"message": "This is not a list of todos"}
+    output = []
+    todos = ToDo.objects.order_by("-should_be_completed_by_date")
+    for t in todos:
+        output.append({"task": t.taskr})
+    #
+    return {"data": output}
 
 
 # #############################################################################
@@ -60,3 +75,19 @@ def api_todos(request):
 # #############################################################################
 if __name__ == "__main__":
     app.run()
+
+
+'''
+from django.http import HttpResponse
+
+from .models import Question
+
+
+def index(request):
+        latest_question_list = Question.objects.order_by("-pub_date")[:5]
+            output = ", ".join([q.question_text for q in latest_question_list])
+                return HttpResponse(output)
+
+
+            # Leave the rest of the views (detail, results, vote) unchanged
+'''
