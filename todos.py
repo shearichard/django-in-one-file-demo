@@ -10,6 +10,9 @@ import os
 from django.db import models
 from nanodjango import Django
 
+API_VERSION = "v1"
+API_TODOS_URL_BASE = "todos"
+
 app = Django(
     SECRET_KEY=os.environ["DJANGO_SECRET_KEY"],
     SQLITE_DATABASE="todos_db.sqlite3"
@@ -41,7 +44,15 @@ class ToDo(models.Model):
 # #############################################################################
 @app.route("/")
 def todos(request):
-    return "This is a list of todos"
+    return "This is not a list of todos"
+
+
+# #############################################################################
+# Views
+# #############################################################################
+@app.api.get(f"{API_TODOS_URL_BASE}/{API_VERSION}/")
+def api_todos(request):
+    return {"message": "This is not a list of todos"}
 
 
 # #############################################################################
