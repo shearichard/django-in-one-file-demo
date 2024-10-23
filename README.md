@@ -25,6 +25,8 @@ I'm interested in this alternative approach for two reasons.
 
 This project is based on the excellent and interesting [nanadjango project](https://github.com/radiac/nanodjango). Nanodjango is being developed by Richard Terry who is responsible for a number of other interesting projects which may be seen on his [Github page](https://github.com/radiac)
 
+----
+
 ## Use of Environmental Variables
 Secrets are kept in environmental variables. 
 
