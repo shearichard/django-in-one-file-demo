@@ -4,7 +4,26 @@
 ## Overview
 This project explores the ideas of having an entire [Django](https://www.djangoproject.com/) project in a single file, internally the result will be a Django project but externally it will be more like a [Flask](https://flask.palletsprojects.com/en/3.0.x/) project. 
 
-In it's inital form it's based on the [nanodjango project](https://github.com/radiac/nanodjango).
+
+
+## What?
+
+When looking at Python web frameworks it's natural to think first of [Flask](https://flask.palletsprojects.com/en/3.0.x/Flask) and [Django](https://www.djangoproject.com/), there are others but Flask and Django are the leaders.
+
+One of the more obvious differences between Flask and Django is that Flask projects don't have an expected file structure, in fact it's not unusual for a Flask project to consist of single file. By contrast, in Django, there's a well established convention on which files do what and where they are located.
+
+This project is all about trying out the possibilities of turning that Django convention on its head, and putting everything into a single file.
+
+### Why?
+
+I'm interested in this alternative approach for two reasons.
+
+*   I'm interested in the benefits that might accrue for teaching and demonstration. I think it's likely that when teaching, or demonstrating, Django having all the processing in a single file allows the learner to get a quick start to understanding which bits do what, and why.
+*   Secondarily I am interested in discovering whether 'real' Django apps might be built this way. In the past I've turned to Flask when the task at hand seems 'too simple' for Django and I think it's worth investigating whether for some use cases 'Single File Django' might be a way of achieving the simplicity of having only a single file while enjoying the 'batteries included' benefits of Django.
+
+### How?
+
+This project is based on the excellent and interesting [nanadjango project](https://github.com/radiac/nanodjango). Nanodjango is being developed by Richard Terry who is responsible for a number of other interesting projects which may be seen on his [Github page](https://github.com/radiac)
 
 ## Use of Environmental Variables
 Secrets are kept in environmental variables. 
