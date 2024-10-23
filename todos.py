@@ -11,6 +11,7 @@ from datetime import date
 from django.db import models
 from django.http import HttpResponse
 from django.template import loader
+from django.contrib.staticfiles.views import serve
 #
 # from pydantic import (BaseModel, EmailStr, Field, field_validator, model_validator,)   # noqa: E401
 from pydantic import (Field)
@@ -62,6 +63,11 @@ def todos(request):
     }
     return HttpResponse(template.render(context, request))
 
+@app.route("/about")
+def about(request):
+    template = loader.get_template("todos/about.html")
+    context={}
+    return HttpResponse(template.render(context, request))
 
 # #############################################################################
 # Schema

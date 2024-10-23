@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}nanodjango : About the demo{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">About the nanodjango demo</h1>
+    <p class="lead">This is a simple application to demonstrate the 'django in one file' powers of nanodjango.</p>
+    <hr class="my-4">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>What?</h2>
+          <p>When looking at Python web frameworks it's natural to think first of <a href="https://flask.palletsprojects.com/en/3.0.x/Flask">Flask</a> and <a href="https://www.djangoproject.com/">Django</a>, there are others but Flask and Django are the leaders.<p> 
+          <p>One of the more obvious differences between Flask and Django is that Flask projects don't have an expected file structure, in fact it's not unusual for a Flask project to consist of single file. By contrast, in Django, there's a well established convention on which files do what and where they are located.<p>
+          <p>This project is all about trying out the possibilities of turning that Django convention on its head, and putting everything into a single file.<p>
+          <h2>Why?</h2>
+          <p>I'm interested in this alternative approach for two reasons.</p>
+          <ul>
+            <li>I'm interested in the benefits that might accrue for teaching and demonstration. I think it's likely that when teaching, or demonstrating, Django having all the processing in a single file allows the learner to get a quick start to understanding which bits do what, and why. </li>
+            <li>Secondarily I am interested in discovering whether 'real' Django apps might be built this way. In the past I've turned to Flask when the task at hand seems 'too simple' for Django and I think it's worth investigating whether for some use cases 'Single File Django' might be a way of achieving the simplicity of having only a single file while enjoying the 'batteries included' benefits of Django. </li>
+          </ul>
+          <h2>How?</h2>
+            <p>This project is based on the excellent and interesting <a href="https://github.com/radiac/nanodjango">nanadjango project</a>. Nanodjango is being developed by Richard Terry who is responsible for a number of other interesting projects which may be seen on his <a href="https://github.com/radiac">Github page</a></p>.
+        </div>
+        <div class="col-6">
+          &nbsp;
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
